@@ -32,4 +32,4 @@ interface Window {
 
 declare let ga: Function;
 
-declare const VUE_APP_ENV: 'test' | 'dev' | 'pre' | false;
+declare const VUE_APP_ENV: 'dev' | 'pre' | false;

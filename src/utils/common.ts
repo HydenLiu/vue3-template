@@ -34,11 +34,19 @@ export const formatTime = (time: dayjs.ConfigType | undefined, fmt = "YYYY-MM-DD
 };
 
 /**
+ * 
+ * 判断类型
+ */
+export const DetermineType = (val: any) => {
+  return Object.prototype.toString.call(val).slice(8, -1)
+}
+
+/**
  * 防抖
  */
 export const debounce = (fn: Function, wait: number | undefined) => {
   let timeOut: NodeJS.Timeout;
-  return function() {
+  return function () {
     clearTimeout(timeOut)
     timeOut = setTimeout(() => {
       fn.apply(this, arguments)

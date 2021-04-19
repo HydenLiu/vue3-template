@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { notification } from 'ant-design-vue'
 
-console.log(import.meta.env)
 const service = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_API,
   timeout: 30000
@@ -11,6 +10,8 @@ const service = axios.create({
 service.interceptors.request.use(config => {
   // token 封装，或者接口请求加密
   return config
+}, error=>{
+  return Promise.reject(error)
 })
 
 // 响应拦截

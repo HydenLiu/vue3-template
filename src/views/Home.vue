@@ -1,41 +1,40 @@
 <template>
   <div class="home">
-    <!-- <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" /> -->
-    <a-button @click="handerClick">{{ msg }}</a-button>
-    <a href="http://" target="_blank" rel="noopener noreferrer">a</a>
+    <hello-world msg="Welcome"/>
+    <a-button>{{ num }}</a-button>
+    <a :href="item.link" v-for="item in hotList" :key="item.hotValue"> {{ item.text }} </a>
     <a-input/>
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Options } from 'vue-class-component'
+import { onMounted, computed, toRefs, reactive } from 'vue'
+import { useStore } from 'vuex'
 import HelloWorld from '@/components/HelloWorld.vue'
-import { getData } from '@/api/user'
 
-@Options({
+export default {
+  name: 'Home',
   components: {
     HelloWorld
-  }
-})
-export default class Home extends Vue {
-  public msg = 'xxx'
-
-  // private arr
-
-  created() {
-    this.getData()
-  }
-
-  private getData() {
-    getData().then((res) => {
-      this.msg = '222'
-      console.log(res)
-      // this.arr = res.data
+  },
+  setup() {
+    const store = useStore()
+    const dataMap = reactive({
+      num: '按钮',
+      list: store.getters.hotList
     })
-  }
+    const hotList = computed(() => store.getters.hotList)
+    const getList = () => store.dispatch('user/getHotData')
 
-  public handerClick() {
-    this.msg = 'fff'
+    onMounted(() => {
+      getList()
+      console.log(dataMap.list, hotList, '-----')
+    })
+
+    return {
+      hotList,
+      ...toRefs(dataMap)
+    }
   }
 }
 </script>

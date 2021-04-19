@@ -5,17 +5,16 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
-
-@Options({
+export default {
   props: {
-    msg: String
+    msg: {
+      type: String
+    }
+  },
+  setup(props, context) {
+    console.log(props.msg, context)
   }
-})
-export default class HelloWorld extends Vue {
-  msg!: string
 }
 </script>
 
-<style scoped lang="less">
-</style>
+<style scoped lang="less"></style>
