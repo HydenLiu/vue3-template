@@ -1,9 +1,11 @@
 <template>
   <div class="home">
-    <hello-world msg="Welcome"/>
+    <hello-world msg="Welcome" />
     <a-button>{{ num }}</a-button>
-    <a :href="item.link" v-for="item in hotList" :key="item.hotValue"> {{ item.text }} </a>
-    <a-input/>
+    <div v-for="item in hotList" :key="item.hotValue">
+      <a :href="item.link" > {{ item.text }} </a>
+    </div>
+    <a-input />
   </div>
 </template>
 
