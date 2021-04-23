@@ -27,11 +27,18 @@ export function parseToString<T>(data: T) {
 }
 
 /**
- * 时间戳转换
+ * 格式化时间
+ * @param date
+ * @param format
  */
-export const formatTime = (time: dayjs.ConfigType | undefined, fmt = "YYYY-MM-DD HH:mm:ss") => {
-  return time ? dayjs(time).format(fmt) : "";
-};
+export function formatDate(
+  date: dayjs.ConfigType | Date | string | number,
+  format = 'YYYY-MM-DD HH:mm:ss'
+): string {
+  if (!date) return '';
+  return dayjs(date).format(format);
+}
+
 
 /**
  * 
