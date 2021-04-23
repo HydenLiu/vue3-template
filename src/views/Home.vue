@@ -25,12 +25,13 @@ export default {
       num: '按钮',
       list: store.getters.hotList
     })
+    // 获取vuex数据
     const hotList = computed(() => store.getters.hotList)
+    // 调用vuex内的接口函数
     const getList = () => store.dispatch('user/getHotData')
 
     onMounted(() => {
       getList()
-      console.log(dataMap.list, hotList, '-----')
     })
 
     return {
