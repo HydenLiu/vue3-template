@@ -1,6 +1,8 @@
 {
-  "name": "vite-vue-typescript-starter",
-  "version": "0.0.0",
+  "name": "{{ name }}",
+  "version": "1.0.0",
+  "description": "{{ description }}",
+  "author": "{{ author }}",
   "scripts": {
     "dev": "vite",
     "start:prd": "vite serve --mode production",
