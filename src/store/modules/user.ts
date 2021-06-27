@@ -19,8 +19,8 @@ const mutations = {
 }
 
 const actions = {
-  getHotData: async ({commit} : any) => {
-    await getData().then(res => {
+  getHotData: ({ commit }: any) => {
+    getData().then((res: any) => {
       commit('GET_HOST_LIST', res.data)
     })
   }

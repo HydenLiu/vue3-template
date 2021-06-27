@@ -1,4 +1,4 @@
-# Vue 3 + Typescript + Vite + eslint + ant-design-vue
+# Vue 3 + Typescript + Vite + ant-design-vue
 
 * Vue 3 + Typescript + Vite + eslint + ant-design-vue的基础模板
 
@@ -6,5 +6,4 @@
 
 * 本地存储添加AES ECB加密
 
-* css预处理器：less
 
