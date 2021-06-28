@@ -1,0 +1,10 @@
+@import "./variables.scss";
+@import "./common.scss";
+@import "./iconfonts";
+
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}

@@ -1,0 +1,85 @@
+@mixin flex($type:'row', $content:center, $items:center) {
+  display: flex;
+  flex-direction: $type;
+  justify-content: $content;
+  align-items: $items;
+}
+
+@mixin bgCenter($size:contain, $pos:center) {
+  background-repeat: no-repeat;
+  background-size: $size;
+  background-position: $pos;
+}
+
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin text($color:#000, $size:28, $lineheight:28, $textalign:left) {
+  color: $color;
+  font-size: $size*1px;
+  line-height: $lineheight*1px;
+  text-align: $textalign
+}
+
+@mixin bgi($name) {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: $name;
+}
+
+@mixin img($width, $height, $size:cover) {
+  @include size($width, $height);
+  @include bgi($size);
+}
+
+@mixin colomnEllipsis($colomn:2) {
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $colomn;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+  overflow: hidden;
+  white-space: normal !important;
+}
+
+@mixin ellipsis() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@keyframes turn {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  25% {
+    -webkit-transform: rotate(90deg);
+  }
+
+  50% {
+    -webkit-transform: rotate(180deg);
+  }
+
+  75% {
+    -webkit-transform: rotate(270deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+
+/**
+ * at 点击态
+ */
+ @mixin atActive {
+  transition: background-color 0.3s;
+
+  &:active {
+    background-color: #F0F0F0;
+  }
+}
