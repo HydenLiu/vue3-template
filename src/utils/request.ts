@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { notification } from 'ant-design-vue'
-import router from "@/router";
+import router from '@/router'
 
 const service = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_API,

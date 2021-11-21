@@ -1,11 +1,11 @@
 import { defineConfig } from 'vite'
-import { resolve } from "path";
+import { resolve } from 'path'
 import vue from '@vitejs/plugin-vue'
 import legacy from '@vitejs/plugin-legacy'
 import styleImport from 'vite-plugin-style-import'
 
 function pathResolve(dir: string) {
-  return resolve(__dirname, ".", dir);
+  return resolve(__dirname, '.', dir)
 }
 
 // https://vitejs.dev/config/
@@ -13,9 +13,9 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       less: {
-        javascriptEnabled: true,
-      },
-    },
+        javascriptEnabled: true
+      }
+    }
   },
   plugins: [
     vue(),
@@ -23,13 +23,13 @@ export default defineConfig({
       libs: [{
         libraryName: 'ant-design-vue',
         resolveStyle: (name) => {
-          //这里我没有引入less的css 文件因为我已经安装过了sass 不想重复安装一个预编译器。
-          //如果您的项目只需要ant 或者 两者都需要，请使用less。
-          return `ant-design-vue/es/${name}/style/index.css`;
+          // 这里我没有引入less的css 文件因为我已经安装过了sass 不想重复安装一个预编译器。
+          // 如果您的项目只需要ant 或者 两者都需要，请使用less。
+          return `ant-design-vue/es/${name}/style/index.css`
         },
         resolveComponent: (name) => {
-          return `ant-design-vue/es/${name}/index.js`;
-        },
+          return `ant-design-vue/es/${name}/index.js`
+        }
       }]
     }),
     legacy({
@@ -38,7 +38,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      "@": pathResolve("src"),
+      '@': pathResolve('src')
     }
   },
   base: './',
@@ -52,11 +52,11 @@ export default defineConfig({
         target: 'https://iiter.cn',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/a/, '')
-      },
+      }
     }
   },
   build: {
-    base: "",
+    base: '',
     outDir: 'dist',
     assetsDir: 'assets',
     // 小于此阈值的导入或引用资源将内联为base64编码，设置为0可禁用此项。默认4096（4kb）

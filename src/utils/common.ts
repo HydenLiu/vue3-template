@@ -2,8 +2,8 @@ import dayjs from 'dayjs'
 
 // 随机生成16位数字
 export function rand16() {
-  const num = Math.random().toString();
-  return num.slice(2);
+  const num = Math.random().toString()
+  return num.slice(2)
 }
 
 /**
@@ -12,18 +12,18 @@ export function rand16() {
  * @returns {String}
  */
 export function parseToString<T>(data: T) {
-  let d = '';
+  let d = ''
   switch (typeof data) {
     case 'string':
-      d = data;
-      break;
+      d = data
+      break
     case 'object':
-      d = JSON.stringify(data);
-      break;
+      d = JSON.stringify(data)
+      break
     default:
-      d = (data as any).toString();
+      d = (data as any).toString()
   }
-  return d;
+  return d
 }
 
 /**
@@ -35,13 +35,12 @@ export function formatDate(
   date: dayjs.ConfigType | Date | string | number,
   format = 'YYYY-MM-DD HH:mm:ss'
 ): string {
-  if (!date) return '';
-  return dayjs(date).format(format);
+  if (!date) return ''
+  return dayjs(date).format(format)
 }
 
-
 /**
- * 
+ *
  * 判断类型
  */
 export const DetermineType = (val: any) => {
@@ -52,11 +51,11 @@ export const DetermineType = (val: any) => {
  * 防抖
  */
 export const debounce = (fn: Function, wait: number | undefined) => {
-  let timeOut: NodeJS.Timeout;
-  return function () {
+  let timeOut: NodeJS.Timeout
+  return function() {
     clearTimeout(timeOut)
-    timeOut = setTimeout(() => {
-      fn.apply(this, arguments)
+    timeOut = setTimeout((...arg) => {
+      fn.apply(this, [...arg])
     }, wait)
   }
 }
@@ -66,12 +65,12 @@ export const debounce = (fn: Function, wait: number | undefined) => {
  * @param obj
  */
 export function isNotEmptyObject(obj: any): boolean {
-  if (typeof obj === "object") {
+  if (typeof obj === 'object') {
     if (Object.keys(obj).length > 0) {
-      return true;
+      return true
     }
   }
-  return false;
+  return false
 }
 
 /**
@@ -79,10 +78,10 @@ export function isNotEmptyObject(obj: any): boolean {
  * @param value
  */
 export function isNotBlankAndEmptyObject(value: any): boolean {
-  if (value === null || value === undefined || value === "") {
-    return false;
+  if (value === null || value === undefined || value === '') {
+    return false
   }
-  return isNotEmptyObject(value);
+  return isNotEmptyObject(value)
 }
 
 /**
@@ -91,23 +90,23 @@ export function isNotBlankAndEmptyObject(value: any): boolean {
 * @param fileName
 * */
 export function downLoadFile(data: any, fileName: string) {
-  const blob = new Blob([data], { type: data.type });
-  if ("download" in document.createElement("a")) {
+  const blob = new Blob([data], { type: data.type })
+  if ('download' in document.createElement('a')) {
     // 非IE下载
-    const elink = document.createElement("a");
-    elink.download = fileName;
-    elink.style.display = "none";
-    elink.href = window.URL.createObjectURL(blob);
-    document.body.appendChild(elink);
-    elink.click();
-    URL.revokeObjectURL(elink.href); // 释放URL 对象
-    document.body.removeChild(elink);
+    const elink = document.createElement('a')
+    elink.download = fileName
+    elink.style.display = 'none'
+    elink.href = window.URL.createObjectURL(blob)
+    document.body.appendChild(elink)
+    elink.click()
+    URL.revokeObjectURL(elink.href) // 释放URL 对象
+    document.body.removeChild(elink)
   } else {
     // IE10+下载
-    navigator.msSaveBlob(blob, fileName);
+    // @ts-ignore
+    navigator.msSaveBlob(blob, fileName)
   }
 }
-
 
 /**
  * 遍历tree结构 数据
@@ -117,10 +116,10 @@ export function downLoadFile(data: any, fileName: string) {
 export function changeTree(val = []) {
   val.forEach((item: any) => {
     if (item.children && item.children.length > 0) {
-      changeTree(item.children);
+      changeTree(item.children)
     }
-  });
-  return val;
+  })
+  return val
 }
 
 /**
@@ -128,9 +127,9 @@ export function changeTree(val = []) {
  * @param url
  *
  */
-export function getFileName(url = "") {
-  let string = url.substring(url.lastIndexOf("/") + 1);
-  return string;
+export function getFileName(url = '') {
+  const string = url.substring(url.lastIndexOf('/') + 1)
+  return string
 }
 
 /**
@@ -139,18 +138,18 @@ export function getFileName(url = "") {
  */
 export function toggleClass(element: HTMLElement, className: string) {
   if (!element || !className) {
-    return;
+    return
   }
-  let classString = element.className;
-  const nameIndex = classString.indexOf(className);
+  let classString = element.className
+  const nameIndex = classString.indexOf(className)
   if (nameIndex === -1) {
-    classString += "" + className;
+    classString += '' + className
   } else {
     classString =
       classString.substr(0, nameIndex) +
-      classString.substr(nameIndex + className.length);
+      classString.substr(nameIndex + className.length)
   }
-  element.className = classString;
+  element.className = classString
 }
 
 /**
@@ -159,11 +158,11 @@ export function toggleClass(element: HTMLElement, className: string) {
  * @param {string} key 要判断的键
  * @returns {boolean}
  */
-export function isContinuous(arr = [], key = "id") {
+export function isContinuous(arr = [], key = 'id') {
   return arr.every((item, index, array) => {
     if (index !== array.length - 1) {
-      return item[key] + 1 === array[index + 1][key];
+      return item[key] + 1 === array[index + 1][key]
     }
-    return true;
-  });
+    return true
+  })
 }

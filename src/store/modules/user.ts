@@ -1,10 +1,10 @@
 import { getData } from '@/api/user'
 
 export interface IHotData {
-  hotValue: string,
-  icon: string,
-  index: number,
-  link: string,
+  hotValue: string
+  icon: string
+  index: number
+  link: string
   text: string
 }
 

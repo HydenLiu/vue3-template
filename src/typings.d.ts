@@ -15,21 +15,21 @@ declare module 'crypto-js';
 
 // google analytics interface
 interface GAFieldsObject {
-  eventCategory: string;
-  eventAction: string;
-  eventLabel?: string;
-  eventValue?: number;
-  nonInteraction?: boolean;
+  eventCategory: string
+  eventAction: string
+  eventLabel?: string
+  eventValue?: number
+  nonInteraction?: boolean
 }
 interface Window {
   ga: (
     command: 'send',
     hitType: 'event' | 'pageview',
     fieldsObject: GAFieldsObject | string,
-  ) => void;
-  reloadAuthorized: () => void;
+  ) => void
+  reloadAuthorized: () => void
 }
 
-declare let ga: Function;
+declare let ga: Function
 
-declare const VUE_APP_ENV: 'dev' | 'pre' | false;
+declare const VUE_APP_ENV: 'dev' | 'pre' | false
